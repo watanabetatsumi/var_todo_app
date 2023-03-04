@@ -1,0 +1,28 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends 'base.html' %}
+
+{% block title %}ログイン画面{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container text-center w-50">
+        <h2 class="fs-2 mb-5">ログインして下さい</h2>
+        <form method="POST">
+            <input type="text" placeholder="Email" name="email" class="form-control mb-2">
+            <input type="password" placeholder="Password" name="password" class="form-control mb-5">
+            <div>
+                <button class="btn btn-primary">ログイン</button>
+            </div>
+    </div>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class="flashes">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+    </form>
+</main>
+{% endblock content %}

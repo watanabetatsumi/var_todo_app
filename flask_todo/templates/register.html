@@ -1,0 +1,31 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends 'base.html'%}
+
+{% block title %}ユーザー情報登録画面{% endblock %}
+
+{% block content %}
+<main>
+  <div class="container text-center w-50">
+    <h1 class="fs-2 mb-5">登録して下さい</h1>
+    <form method="post">
+        <input type="text" placeholder="Name" name="name" class="form-control mb-2">
+        <input type="text" placeholder="Email" name="email"class="form-control mb-2">
+        <input type="password" placeholder="Password" name="password1"class="form-control mb-2">
+        <input type="password" placeholder="Password Confirmation" name="password2"class="form-control mb-5">
+      <div>
+          <button class="btn btn-primary">登録</button>
+      </div>
+      
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class="flashes">
+              {% for message in messages %}
+              <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </form>
+  </div>
+</main>
+{% endblock content %}

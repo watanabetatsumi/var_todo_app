@@ -1,0 +1,32 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends 'base.html' %}
+{% block title %}ホーム画面{% endblock %}
+{% block content %}
+<main>
+    <div class="text-center">
+        {% if current_user.is_authenticated %}
+            <h2 class="text-success fs-4 mb-4">
+                ようこそ！{{ current_user.username }}さん
+            </h2>
+        {% else %}
+            <h2 class="text-danger fs-4 mb-4">
+                ログイン or ユーザー登録をしてください
+            </h2>
+            <form>
+                <div class="container flex-column">
+                    <div class='mb-4'>
+                        <button class='btn btn-primary form-control w-25'>
+                            <a href="{{ url_for('todo_app.login') }}" class="text-light text-decoration-none">ログイン</a>
+                        </button>
+                    </div>
+                    <div>
+                        <button class='btn btn-success form-control w-25'>
+                            <a href="{{ url_for('todo_app.register') }}" class="text-light text-decoration-none">登録</a>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+</main>
+{% endblock content %}
